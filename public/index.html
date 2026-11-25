@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilazi Live</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="dot" id="dot"></span>Kilazi Live</div>
+  <div class="meta"><span id="status">ready</span><span id="clock">00:00</span></div>
+  <div class="actions">
+    <button id="startCall" class="primary" title="Your mic plus the Chrome tab your call runs in">Start: mic + call tab</button>
+    <button id="startMic" title="Only your microphone">Mic only</button>
+    <button id="stop" class="danger" hidden>Stop</button>
+    <button id="openSettings" class="ghost">Settings</button>
+  </div>
+</header>
+
+<div id="banner" class="banner" hidden></div>
+<div id="consent" class="banner soft" hidden>Let the people on the call know it is being transcribed. <button id="consentOk" class="ghost">Got it</button></div>
+
+<main>
+  <section class="panel transcript">
+    <div class="panel-head"><h2>Transcript</h2><div class="meters"><span>mic</span><i id="micMeter"></i><span>tab</span><i id="tabMeter"></i></div></div>
+    <div id="lines" class="lines"><p class="empty">Press Start. Pick the tab your call runs in and tick "Also share tab audio".</p></div>
+  </section>
+  <aside>
+    <section class="panel copilot">
+      <div class="panel-head"><h2>Copilot <small id="providerTag"></small></h2>
+        <label class="toggle"><input type="checkbox" id="auto" checked> every 60 s</label></div>
+      <div id="tools" class="warn" hidden>Your agent can run commands. Anyone on this call can try to steer it.</div>
+      <div id="copilot" class="copilot-out"><p class="empty">Reads the call and suggests what to say next.</p></div>
+      <form id="askForm" class="ask"><input id="ask" placeholder="Ask about the call..." autocomplete="off"><button>Ask</button></form>
+    </section>
+    <section class="panel notes">
+      <div class="panel-head"><h2>Notes</h2><div><button id="save" class="ghost">Save</button><button id="download" class="ghost">Download .md</button></div></div>
+      <textarea id="notes" placeholder="Your notes. Saved with the transcript."></textarea>
+      <div id="saved" class="hint"></div>
+    </section>
+  </aside>
+</main>
+
+<dialog id="settings">
+  <form method="dialog" class="settings">
+    <h2>Settings</h2>
+    <label id="codeRow">Access code <input id="code" autocomplete="off" placeholder="from whoever runs this server"></label>
+    <label id="keyRow">Your OpenAI key <input id="key" type="password" autocomplete="off" placeholder="sk-..."><small>Stays in this browser; sent only to this server, which passes it to OpenAI.</small></label>
+    <label>Copilot <select id="provider"></select></label>
+    <label>Language <select id="lang">
+      <option value="">auto</option><option value="en">English</option><option value="es">Spanish</option><option value="pt">Portuguese</option>
+      <option value="fr">French</option><option value="de">German</option><option value="it">Italian</option><option value="ru">Russian</option>
+    </select></label>
+    <p id="settingsNote" class="hint"></p>
+    <div class="row"><button value="ok" class="primary">Done</button></div>
+  </form>
+</dialog>
+
+<footer id="credit">Powered by Kilazi Live, <a href="https://kilazi.com" target="_blank" rel="noopener">kilazi</a></footer>
+<script src="app.js"></script>
+</body>
+</html>
