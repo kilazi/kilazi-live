@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "description": "Live transcript of your calls in the browser, with a copilot that reads along: OpenAI, Claude Code, Codex or any token endpoint.",
   "bin": { "kilazi-live": "bin/kilazi-live.js" },
-  "files": ["bin", "src", "public", "example.env"],
+  "files": ["bin", "src", "public", "example.env", "NOTICE"],
   "scripts": { "start": "node bin/kilazi-live.js", "test": "node test/smoke.js" },
   "engines": { "node": ">=18" },
   "keywords": ["meeting-transcription", "live-captions", "copilot", "claude-code", "codex", "whisper"],
-  "license": "MIT"
+  "license": "Apache-2.0"
 }

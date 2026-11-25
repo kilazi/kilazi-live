@@ -4,3 +4,4 @@ kilazi-live-notes
 *.log
 .DS_Store
 test/out
+!AGENTS.md
