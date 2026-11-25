@@ -1,0 +1,25 @@
+# Hosted kilazi-live behind a reverse proxy, with access codes.
+# Put this next to a .env (chmod 600) holding OPENAI_API_KEY, ACCESS_CODES and
+# CODE_DAILY_MINUTES, plus PROXY_NETWORK = the docker network your proxy is on.
+#   docker compose up -d --build     start / redeploy
+#   docker compose logs -f           logs
+#   docker compose down              stop
+name: kilazi-live
+services:
+  kilazi-live:
+    build: ..
+    container_name: kilazi-live
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      HOST: 0.0.0.0
+      PORT: 4321
+      NO_OPEN: "1"
+    ports:
+      - "127.0.0.1:4321:4321"
+    mem_limit: 256m
+    networks: [proxy]
+networks:
+  proxy:
+    name: ${PROXY_NETWORK:-proxy}
+    external: true
